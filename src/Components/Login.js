@@ -34,8 +34,8 @@ function Login(){
   
   
   
-  return(<div>
-      <div className="login">
+  return(<div className="container">
+  <div className="login">
   <div className="login_Logo"><img className="login_img" src={Spotify_Icon_RGB_White} alt="Logo"></img> &nbsp;&nbsp;&nbsp;<h1 className="heading">Spotify Trends</h1></div>
    <h3 className="sub_heading">Where music meets data.</h3>
 <Button variant="contained" className= {classes.buttonColor}><a href = {loginURL} className="login_link">Log In to Spotify</a></Button>

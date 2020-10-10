@@ -26,42 +26,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
@@ -108,7 +72,7 @@ function Navbar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+    <Menu backgroundColor='#383838'
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
@@ -117,14 +81,15 @@ function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
       >
-      <MenuItem  onClick={handleMenuClose}><Link style={navStyle} to='/albums'>Albums</Link></MenuItem>
-      <MenuItem  onClick={handleMenuClose}><Link style={navStyle} to='/artists'>Artists</Link></MenuItem>
+      <MenuItem  backgroundColor='#383838' onClick={handleMenuClose}><Link style={navStyle} to='/albums'>Albums</Link></MenuItem>
+      <MenuItem  backgroundColor='#383838' onClick={handleMenuClose}><Link style={navStyle} to='/artists'>Artists</Link></MenuItem>
     </Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
+      backgroundColor='#383838'
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
@@ -134,7 +99,7 @@ function Navbar() {
       onClose={handleMobileMenuClose}
     >
      
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem backgroundColor='#383838' onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -143,7 +108,7 @@ function Navbar() {
         >
         </IconButton>
         <Typography className={classes.title} variant="h4" noWrap>
-          Your Library
+          Explore
         </Typography>
       </MenuItem>
     </Menu>
@@ -152,7 +117,7 @@ function Navbar() {
   return (
     <div>
     <div className={classes.grow}>
-    <AppBar position="static" style={{backgroundColor: "black"}}>
+    <AppBar position="static" style={{backgroundColor: "#333333"}}>
       <Toolbar>
         <IconButton
           edge="start"
@@ -162,21 +127,8 @@ function Navbar() {
           <Link style={navStyle} to='/home'><HomeIcon style={{ fontSize: 40, color: "white"}} /></Link>
         </IconButton>
         <Typography className={classes.title} variant="h4" noWrap>
-          Spotify
+          SpotifyTrends
         </Typography>
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
         <div className={classes.grow} />
         <div className={classes.sectionDesktop}>
           <IconButton

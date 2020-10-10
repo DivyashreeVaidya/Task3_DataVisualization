@@ -98,11 +98,19 @@ function Albums() {
                }
                ]
             }  
-  return (
-    <div>
-    <div className="album_content">
-      <h1>Albumsssss</h1>
-      <Bar   backgroundColor="#383838"
+  return (<div className="album_content">
+           { albumData? (<div>
+    
+    <ThemeProvider theme={darkTheme}>
+    <div style={{backgroundColor:"black", color:"white"}}><Typography variant="h6">II.Compare data of your Saved Albums</Typography>
+    </div>
+      <Grid container style={{backgroundColor:'black'}} spacing={8}>
+        <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
+        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
+        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
+          <CardContent >
+            <div className="canvas-container">
+            <Bar   backgroundColor="#333333"
           data={chartData1}
           options={{
             title:{
@@ -116,7 +124,18 @@ function Albums() {
             }
           }}
         /> 
-        <Bar   backgroundColor="#383838"
+            </div>
+          
+          </CardContent>
+          </Card>
+          </Paper>
+          </Grid>
+        <Grid item xs={8} style={{backgroundColor:'black',margin:'auto'}}>
+        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
+        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
+          <CardContent >
+            <div className="canvas-container">
+            <Bar   backgroundColor="#333333"
           data={chartData2}
           options={{
             title:{
@@ -128,9 +147,19 @@ function Albums() {
               display:true,
               position:'right'
             }
-          }}
-        /> 
-    </div> </div>
+          }}/> 
+            </div>
+          
+          </CardContent>
+          </Card>
+          </Paper>
+          </Grid>
+          </Grid> 
+          </ThemeProvider>     
+  </div>):
+  <CircularProgress color='white'/>
+}   
+ </div>
   );
 }
 

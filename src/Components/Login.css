@@ -1,20 +1,13 @@
+
 .login {
     display: grid;
     place-items: center;
     height: 100vh;
-    /*background-image: url(bg2.jpg);*/
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: black;
 }
 
 .container{
     background-color: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
   }
 
 .loginbutton{

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import './App.css';
 import './Homepage.css';
-import {Bar} from 'react-chartjs-2';
-import { CircularProgress, Paper, Avatar, Typography, List, ListItem, Divider, ListItemText, ListItemAvatar} from '@material-ui/core';
+import {Bar, defaults } from 'react-chartjs-2';
+import { Typography, CircularProgress, Paper, Card, Grid, CardContent, Avatar} from '@material-ui/core';
 import { fade, makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const state = {
@@ -24,30 +24,14 @@ const darkTheme = createMuiTheme({
     type: 'dark',
   },
 });
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((darkTheme) => ({
   root: {
     width: '100%',
     maxWidth: 800,
-    backgroundColor: theme.palette.background.paper,
-    margin: "auto"
-  },
-  inline: {
-    display: 'inline',
-  },
-  listItemLayout: {
-    display: 'flex',
-    justify: 'space-between',
-    alignItems: 'center',
-    verticalAlign:'middle',
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-  },
-  large: {
-    width: theme.spacing(18),
-    height: theme.spacing(18),
-    verticalAlign: "middle"
-  },
+    backgroundColor: darkTheme.palette.background.paper,
+    margin: "auto",
+    backgroundColor:'black'
+  }
 }));
 
 function Homepage () {
@@ -62,7 +46,7 @@ function Homepage () {
   let artists;  
   const classes = useStyles();
   const userEndpointUrl = 'https://api.spotify.com/v1/me';
-  const artistEndpointUrl = 'https://api.spotify.com/v1/me/following?type=artist';
+  const artistEndpointUrl = 'https://api.spotify.com/v1/me/following?type=artist&limit=10';
   const [chartData, setChartData] = useState();
   const getTokenFromUrl = ()=> {
         console.log(token);
@@ -158,34 +142,44 @@ function Homepage () {
    
    console.log(`Data is : ${chartData}`);
 
-  return (<div>
-    { userData? (<div className="home_content">
-    <h1>Welcome back, {userData.data.display_name}!</h1>
-    <br/>
-    <Avatar alt={userData.data.display_name} src={userData.data.images[0].url} className={classes.large} style={{margin: "auto"}}/>
+  return (<div className="home_content">
+    { userData? (<div>
+    <div style={{display:'flex', flexDirection:'row', justifyContent:'center',alignItems:'center'}}><Avatar style={{verticalAlign:'bottom'}} alt={userData.data.display_name} src={userData.data.images[0].url}/><Typography variant="h6">Welcome back, {userData.data.display_name}!</Typography></div>
     <div className={classes.root} style={{justifyContent:"space-between"}}>
-    
-    <div>
-      <Bar backgroundColor="#383838"
-          data={chartData1}
-          options={{
-            title:{
+    <ThemeProvider theme={darkTheme}>
+    <div style={{backgroundColor:"black", color:"white"}}><Typography variant="h6">Compare data from all your saved music side by side:</Typography>
+    <Typography variant="body2">I. Artists you follow: Popularity</Typography></div>
+      <Grid container style={{backgroundColor:'black'}}>
+        <Grid item xs={12} style={{backgroundColor:'black', margin:'auto'}}>
+        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
+        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
+          <CardContent >
+            <div className="canvas-container">
+            <Bar  backgroundColor="#333333"
+            data={chartData1}
+            options={{
+              title:{
               display:true,
-              text:'Artists Popularity',
+              text:'Popularity',
               fontSize:20
             },
             legend:{
+              fontSize: 20,
               display:true,
               position:'right'
             }
-          }}
-        /> 
+          }}/> 
+            </div>
           
-    </div>
- 
+          </CardContent>
+          </Card>
+          </Paper>
+          </Grid>
+          </Grid> 
+          </ThemeProvider>     
   </div>
   </div>):
-  <CircularProgress color="white"/>
+  <CircularProgress color='white'/>
 }</div>
 );
 }

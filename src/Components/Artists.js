@@ -96,8 +96,17 @@ function Artists() {
             }
   return (
     <div className="artists_content">
-      <h1>Artistsss</h1>
-      <Pie
+      {followersData?( <div>
+      <ThemeProvider theme={darkTheme}>
+    <div style={{backgroundColor:"black", color:"white"}}>
+    <Typography variant="h5">I. Artists you follow: No. of followers</Typography></div>
+      <Grid container style={{backgroundColor:'black'}}>
+        <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
+        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
+        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
+          <CardContent >
+            <div className="canvas-container">
+            <Pie
           data={chartData1}
           options={{
             title:{
@@ -111,9 +120,17 @@ function Artists() {
             }
           }}
         />
-
-    </div>
-  );
+        </div>
+          </CardContent>
+          </Card>
+          </Paper>
+          </Grid>
+          </Grid> 
+          
+          </ThemeProvider> </div> 
+  ):<CircularProgress color='white'/>}
+  </div>
+);
 }
 
 export default Artists;
