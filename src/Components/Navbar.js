@@ -83,6 +83,7 @@ function Navbar() {
       >
       <MenuItem  backgroundColor='#383838' onClick={handleMenuClose}><Link style={navStyle} to='/albums'>Albums</Link></MenuItem>
       <MenuItem  backgroundColor='#383838' onClick={handleMenuClose}><Link style={navStyle} to='/artists'>Artists</Link></MenuItem>
+      {/*<MenuItem  backgroundColor='#383838' onClick={handleMenuClose}><Link style={navStyle} to='/tracks'>Tracks</Link></MenuItem>*/}
     </Menu>
   );
 

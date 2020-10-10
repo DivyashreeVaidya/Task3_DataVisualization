@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar';
 import Albums from './Components/Albums';
 import Artists from './Components/Artists';
 import Login from './Components/Login';
+import Tracks from './Components/Tracks';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {getTokenFromUrl} from './spotify';
 
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/home" component={Homepage}/>
         <Route path="/albums" component={Albums}/>
         <Route path="/artists" component={Artists}/>
+        {/*<Route path="/tracks" component={Tracks}/>*/}
         </Switch>
       </Router>
       </div>) :

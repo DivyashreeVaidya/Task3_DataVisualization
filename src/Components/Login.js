@@ -3,6 +3,11 @@ import Spotify_Icon_RGB_White from './Spotify_Icon_RGB_White.png';
 import './Login.css';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+//import { fadeIn, flipInX } from 'react-animations'
+import styled, { keyframes } from 'styled-components';
+
+//const FadeIn = styled.div`animation: 2s ${keyframes`${fadeIn}`} infinite`;
+//const FlipinX = styled.div`animation: 2s ${keyframes`${flipInX}`} infinite`;
 const useStyles = makeStyles(() => ({
   buttonColor: {
     backgroundColor: "#1db954",
@@ -36,7 +41,7 @@ function Login(){
   
   return(<div className="container">
   <div className="login">
-  <div className="login_Logo"><img className="login_img" src={Spotify_Icon_RGB_White} alt="Logo"></img> &nbsp;&nbsp;&nbsp;<h1 className="heading">Spotify Trends</h1></div>
+  <div className="login_Logo"><img className="login_img" src={Spotify_Icon_RGB_White} alt="Logo"></img> &nbsp;<h1 className="heading">Spotify Trends</h1></div>
    <h3 className="sub_heading">Where music meets data.</h3>
 <Button variant="contained" className= {classes.buttonColor}><a href = {loginURL} className="login_link">Log In to Spotify</a></Button>
 </div>
