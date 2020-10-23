@@ -1,3 +1,52 @@
+# Site Snapshots
+
+### Login Page 
+![login](img1.png)
+>Login page for Spotify trends.
+
+### Authentication page
+![auth](img2.png)
+> Redirects user to user authentication.
+
+### Homepage
+![home](img3.png)
+> Home page showing comparison between followed artists' follwers count.
+
+### Albums comparison#1
+![albums1](img4.png)
+> Chart based on saved album data #1.
+
+### Albums comparison#2
+![albums2](img5.png)
+> Chart based on saved album data #2.
+
+### Appbar navigation menu.
+![nav](img6.png)
+> Navigation menu based on saved music from user's library.
+
+### Artists data comparison
+![artists](img7.png)
+> Saved Artists' popularity comparison chart.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

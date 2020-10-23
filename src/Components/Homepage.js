@@ -32,6 +32,7 @@ const useStyles = makeStyles((darkTheme) => ({
     margin: "auto",
     backgroundColor:'black'
   }
+  
 }));
 
 function Homepage () {
