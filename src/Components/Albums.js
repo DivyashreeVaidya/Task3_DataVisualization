@@ -15,9 +15,6 @@ const darkTheme = createMuiTheme({
 });
 const useStyles = makeStyles((darkTheme) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexGrow: 1,
     backgroundColor: darkTheme.palette.background.paper,
     margin: "auto"
   },
@@ -134,10 +131,11 @@ function Albums() {
         <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
         <Card className={classes.root} style={{backgroundColor:'#333333'}}>
           <CardContent >
-            <div className="canvas-container">
+            <div className="canvas-container" style={{width:'100%', height:'80%'}}>
             <Bar   backgroundColor="#333333"
           data={chartData2}
           options={{
+            responsive:true,
             title:{
               display:true,
               text:'Saved Albums: Total Tracks',
