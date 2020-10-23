@@ -6,6 +6,7 @@ import './Artists.css';
 import { CircularProgress, Paper, Avatar, Typography, List, ListItem, Divider, ListItemText, ListItemAvatar, Grid, Card, CardContent, CardActionArea} from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {Pie} from 'react-chartjs-2';
+import PieArtist from './PieArtist';
 const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
@@ -13,11 +14,8 @@ const darkTheme = createMuiTheme({
 });
 const useStyles = makeStyles((darkTheme) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexGrow: 1,
     backgroundColor: darkTheme.palette.background.paper,
-    margin: "auto"
+    padding:'20px'
   },
   paper: {
     padding: darkTheme.spacing(3),
@@ -57,77 +55,27 @@ function Artists() {
     fetchfollowersDataHandler();
     console.log(followersData)
   }, []);
-    const artistLabel = followersData.map(item=>{
-    return( item.name ) })
-    const artistFollowers = followersData.map(item=>{
-    return( item.followers.total)  })
-    const chartData1 = {
-     labels: artistLabel,
-     datasets: [
-      {
-        label: 'Followers',
-        backgroundColor: [
-          '#420420',
-          '#cbcba9',
-          '#ffffff',
-          '#407294',
-          '#133337',
-          '#065535',
-          '#ff7373',
-          '#5ac18e',
-          '#800000',
-          '#7fe5f0',
-        ],
-        hoverBackgroundColor: [
-        'rgba(66, 4, 32, 0.5)',
-        'rgba(203, 203, 169, 0.5)',
-        'rgba(255, 255, 255, 0.5)',
-        'rgba(64, 114, 148, 0.5)',
-        'rgba(19, 51, 55, 0.5)',
-        'rgba(6, 85, 53, 0.5)',
-        'rgba(255, 115, 115, 0.5)',
-        'rgba(90, 193, 142, 0.5)',
-        'rgba(128, 0, 0, 0.5)',
-        'rgba(127, 229, 240, 0.5)'
-        ],
-        data: artistFollowers
-      }
-               ]
-            }
+    
   return (
     <div className="artists_content">
-      {followersData?( <div>
-      <ThemeProvider theme={darkTheme}>
-    <div style={{backgroundColor:"black", color:"white"}}>
-    <Typography variant="h5">I. Artists you follow: No. of followers</Typography></div>
-      <Grid container style={{backgroundColor:'black'}}>
-        <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
-        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
-        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
-          <CardContent >
-            <div className="canvas-container">
-            <Pie
-          data={chartData1}
-          options={{
-            title:{
-              display:true,
-              text:'Artist Followers',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-        </div>
-          </CardContent>
-          </Card>
-          </Paper>
-          </Grid>
+      {followersData?( 
+      <div>
+        <ThemeProvider theme={darkTheme}>
+          <div style={{backgroundColor:"black", color:"white"}}>
+            <Typography variant="h5">I. Artists you follow: No. of followers</Typography>
+          </div>
+          <Grid container style={{backgroundColor:'black'}} justify="center">
+            <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
+              <Card className={classes.root} style={{backgroundColor:'#333333'}}>
+                  <PieArtist 
+                    followersData={followersData}
+                  />
+               
+              </Card>
+            </Grid>
           </Grid> 
-          
-          </ThemeProvider> </div> 
+        </ThemeProvider> 
+      </div> 
   ):<CircularProgress color='white'/>}
   </div>
 );
