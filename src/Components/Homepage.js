@@ -49,6 +49,7 @@ function Homepage () {
   const userEndpointUrl = 'https://api.spotify.com/v1/me';
   const artistEndpointUrl = 'https://api.spotify.com/v1/me/following?type=artist&limit=10';
   const [chartData, setChartData] = useState();
+  var colorArray = ['rgba(250, 130, 62, 0.8)', 'rgba(15, 76, 129, 0.8)', 'rgba(254,74,73,0.8)', 'rgba(42,183,202,0.8)', 'rgba(254,215,102,0.8)', 'rgba(246,171,182, 0.8)', 'rgba(190,155,123,0.8)', 'rgba(99,172,229,0.8)'];
   const getTokenFromUrl = ()=> {
         console.log(token);
         var res = _token.split("&");
@@ -112,8 +113,8 @@ function Homepage () {
        labels: artistLabel,
        datasets: [
                 {
-                 label: 'Artists you follow: Popularity',
-                 backgroundColor: 'rgba(29,185,84,0.8)',
+                 label: 'Artist',
+                 backgroundColor: colorArray.sort(function() {return 0.5 - Math.random()}),
                  borderColor: 'rgba(0,0,0,1)',
                  borderWidth: 2,
                  data: artistPopularity
@@ -144,18 +145,18 @@ function Homepage () {
    console.log(`Data is : ${chartData}`);
 
   return (<div className="home_content">
-    { userData? (<div>
+    { userData? (<div style={{verticalAlign: 'middle'}}>
     <div style={{display:'flex', flexDirection:'row', justifyContent:'center',alignItems:'center'}}><Avatar style={{verticalAlign:'bottom'}} alt={userData.data.display_name} src={userData.data.images[0].url}/><Typography variant="h6">Welcome back, {userData.data.display_name}!</Typography></div>
     <div className={classes.root} style={{justifyContent:"space-between"}}>
     <ThemeProvider theme={darkTheme}>
-    <div style={{backgroundColor:"black", color:"white"}}><Typography variant="h6">Compare data from all your saved music side by side:</Typography>
+    <div style={{backgroundColor:"black", color:"white", marginLeft: 10}}><Typography variant="h6">Compare data from all your saved music side by side:</Typography>
     <Typography variant="body2">I. Artists you follow: Popularity</Typography></div>
-      <Grid container style={{backgroundColor:'black'}}>
+      <Grid container style={{backgroundColor:'black', marginTop: 16}}>
         <Grid item xs={12} style={{backgroundColor:'black', margin:'auto'}}>
         <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
         <Card className={classes.root} style={{backgroundColor:'#333333'}}>
-          <CardContent >
-            <div className="canvas-container">
+          <CardContent className="canvasCardContainer">
+            <div className="canvas-container-homepage">
             <Bar  backgroundColor="#333333"
             data={chartData1}
             options={{
@@ -167,7 +168,7 @@ function Homepage () {
             legend:{
               fontSize: 20,
               display:true,
-              position:'right'
+              position:'top'
             }
           }}/> 
             </div>

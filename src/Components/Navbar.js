@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 function Navbar() {
   const navStyle={
     textDecoration: "none",
-    fontSize: 30,
+    fontSize: '1em',
     color: "white"
     };
   const classes = useStyles();
@@ -108,7 +108,7 @@ function Navbar() {
           color="inherit"
         >
         </IconButton>
-        <Typography className={classes.title} variant="h4" noWrap>
+        <Typography className={classes.title} variant="h6" noWrap color="white">
           Explore
         </Typography>
       </MenuItem>
@@ -118,16 +118,16 @@ function Navbar() {
   return (
     <div>
     <div className={classes.grow}>
-    <AppBar position="static" style={{backgroundColor: "#333333"}}>
+    <AppBar position="static" style={{backgroundColor: "#333333", marginBottom: 16, height: 64}}>
       <Toolbar>
         <IconButton
           edge="start"
           className={classes.menuButton}
           color="inherit"
           aria-label="open drawer">
-          <Link style={navStyle} to='/home'><HomeIcon style={{ fontSize: 40, color: "white"}} /></Link>
+          <Link style={navStyle} to='/home'><HomeIcon style={{ fontSize: 32, color: "white"}} /></Link>
         </IconButton>
-        <Typography className={classes.title} variant="h4" noWrap>
+        <Typography className={classes.title} variant="h5" noWrap>
           SpotifyTrends
         </Typography>
         <div className={classes.grow} />
@@ -139,7 +139,7 @@ function Navbar() {
             aria-haspopup="true"
             onClick={handleProfileMenuOpen}
             color="inherit">
-            <h4>Your Library</h4>
+            <h6>Your Library</h6>
           </IconButton>
         </div>
         <div className={classes.sectionMobile}>

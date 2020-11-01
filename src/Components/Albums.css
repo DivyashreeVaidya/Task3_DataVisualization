@@ -1,8 +1,16 @@
+body{
+    overflow-x: hidden !important;
+}
+
 .album_content{
     background-color: black;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+canvas{
+    width: 100% !important;
 }
 @media only screen and (max-width: 880px) {
     Bar{
@@ -11,7 +19,13 @@
     .canvas-container {
         height: 60vh;
         width: 140vw;
-      }
+    }
+}
+
+@media(max-width: 600px){
+    .canvas-container {
+        height: 80vh !important;
+    }
 }
 
 

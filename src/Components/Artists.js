@@ -5,7 +5,7 @@ import './Artists.css';
 //import {getTokenFromUrl} from './Homepage'
 import { CircularProgress, Paper, Avatar, Typography, List, ListItem, Divider, ListItemText, ListItemAvatar, Grid, Card, CardContent, CardActionArea} from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import {Pie} from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
@@ -96,15 +96,15 @@ function Artists() {
             }
   return (
     <div className="artists_content">
-      {followersData?( <div>
+      {followersData?( <div style={{width: '100%', display: 'block'}}>
       <ThemeProvider theme={darkTheme}>
-    <div style={{backgroundColor:"black", color:"white"}}>
+    <div style={{backgroundColor:"black", color:"white", width: '95vw'}}>
     <Typography variant="h5">I. Artists you follow: No. of followers</Typography></div>
-      <Grid container style={{backgroundColor:'black'}}>
-        <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
-        <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
-        <Card className={classes.root} style={{backgroundColor:'#333333'}}>
-          <CardContent >
+      <Grid container style={{backgroundColor:'black', fontSize: 35, width: '95vw'}}>
+        <Grid item xs={11} style={{backgroundColor:'black', margin: 'auto'}}>
+        <Paper elevation={10} style={{backgroundColor:'#333333', width: '100%'}}>
+        <Card style={{backgroundColor:'#333333'}}>
+          <CardContent style={{height: window.innerWidth < 600 ? '60vh' : 'auto'}}>
             <div className="canvas-container">
             <Pie
           data={chartData1}
@@ -115,8 +115,8 @@ function Artists() {
               fontSize:20
             },
             legend:{
-              display:true,
-              position:'right'
+              display: window.innerWidth > 600 ? true : false,
+              position:'top'
             }
           }}
         />

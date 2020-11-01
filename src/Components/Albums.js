@@ -36,6 +36,7 @@ function Albums() {
   const albumEndpointUrl = 'https://api.spotify.com/v1/me/albums';
   const matches = useMediaQuery('(max-width:600px)');
   let albums;
+  var colorArray = ['rgba(250, 130, 62, 0.8)', 'rgba(15, 76, 129, 0.8)', 'rgba(254,74,73,0.8)', 'rgba(42,183,202,0.8)', 'rgba(254,215,102,0.8)', 'rgba(246,171,182, 0.8)', 'rgba(190,155,123,0.8)', 'rgba(99,172,229,0.8)'];
   
   
   const fetchAlbumDataHandler = async () => {
@@ -78,8 +79,8 @@ function Albums() {
      labels: albumLabel,
      datasets: [
               {
-               label: 'Saved Albums: Popularity',
-               backgroundColor: 'rgba(29,185,84,0.8)',
+               label: albumLabel,
+               backgroundColor: colorArray.sort(function() {return 0.5 - Math.random()}),
                borderColor: 'rgba(0,0,0,1)',
                borderWidth: 2,
                data: albumPopularity
@@ -90,8 +91,8 @@ function Albums() {
               labels: albumLabel,
               datasets: [
               {
-               label: 'Saved Albums: Total Tracks',
-               backgroundColor: 'rgba(29,185,84,0.8)',
+               label: albumLabel,
+               backgroundColor: colorArray.sort(function() {return 0.5 - Math.random()}),
                borderColor: 'rgba(0,0,0,1)',
                borderWidth: 2,
                data: albumTracks
@@ -105,14 +106,15 @@ function Albums() {
     <div style={{backgroundColor:"black", color:"white"}}><Typography variant="h6">II.Compare data of your Saved Albums</Typography>
     </div>
       <Grid container style={{backgroundColor:'black'}} spacing={8}>
-        <Grid item xs={8} style={{backgroundColor:'black', margin:'auto'}}>
+        <Grid item xs={11} style={{backgroundColor:'black', margin:'auto'}}>
         <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
         <Card className={classes.root} style={{backgroundColor:'#333333'}}>
           <CardContent >
             <div className="canvas-container">
-            <Bar   backgroundColor="#333333"
-          data={chartData1}
-          options={{
+            <Bar   
+            backgroundColor="#333333"
+            data={chartData1}
+            options={{
             title:{
               display:true,
               text:'Saved Albums: Popularity',
@@ -120,7 +122,7 @@ function Albums() {
             },
             legend:{
               display:true,
-              position:'right'
+              position:'top'
             }
           }}
         /> 
@@ -130,7 +132,7 @@ function Albums() {
           </Card>
           </Paper>
           </Grid>
-        <Grid item xs={8} style={{backgroundColor:'black',margin:'auto'}}>
+        <Grid item xs={11} style={{backgroundColor:'black',margin:'auto'}}>
         <Paper elevation={10} className={classes.root} style={{backgroundColor:'#333333'}}>
         <Card className={classes.root} style={{backgroundColor:'#333333'}}>
           <CardContent >
@@ -145,7 +147,7 @@ function Albums() {
             },
             legend:{
               display:true,
-              position:'right'
+              position:'top'
             }
           }}/> 
             </div>

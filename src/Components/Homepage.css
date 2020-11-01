@@ -3,13 +3,19 @@
     align-items: center;
     justify-content: center;
     color: white;
+    margin-top: 25px !important;
 }
 @media only screen and (max-width: 880px) {
-    Bar{
-        width:auto;
+    .canvasCardContainer{
+        min-height: 60vh !important;
+        overflow-x: scroll !important;
     }
-    .canvas-container {
-        height: 40vh;
-        width: 140vw;
+    .canvas-container-homepage {
+        height: 58vh !important;
+        width: 100% !important;
+        overflow-x: scroll !important;
+      }
+      canvas{
+          height: 100% !important;
       }
 }

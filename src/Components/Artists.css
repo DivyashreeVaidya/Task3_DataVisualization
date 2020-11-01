@@ -2,6 +2,7 @@
     background-color: black;
     color: white;
     height:'100vh';
+    width: 95%;
     display: 'flex';
     flex-direction: row;
     justify-content: space-evenly;
@@ -9,5 +10,21 @@
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 40px;
-    margin: 25px;
+    margin: auto;
+}
+
+@media(max-width: 880px){
+    canvas{
+        height: 100% !important;
+    }
+    .MuiCardContent-root{
+        width: 95% !important;
+    }
+    .canvas-container{
+        overflow-x: hidden;
+        text-align: center;
+        margin: auto;
+        width: 95% !important;
+        height: inherit !important;
+    }
 }
